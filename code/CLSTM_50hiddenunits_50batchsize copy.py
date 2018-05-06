@@ -328,7 +328,7 @@ def create_model():
     l_lstm_sent = Bidirectional(CachedLSTM3m(50, return_sequences=True, kernel_regularizer=regularizers.l2(0.001)))))(review_encoder)
     dense_layer_sentence = TimeDistributed(Dense(200))(l_lstm_sent)
     att_doc = Attention()(dense_layer_sentence)
-    preds = Dense(2, activation='softmax')(att_doc)
+    preds = Dense(10, activation='softmax')(att_doc)
     model = Model(document_input, preds)
     return model
 
